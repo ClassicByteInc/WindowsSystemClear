@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsSystemClear.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        TaskbarItemInfo="{x:Null}"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -14,20 +16,31 @@
         </Grid.ColumnDefinitions>
         <ListBox x:Name="TargetListBox" Grid.Column="0"/>
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" />
-        <StackPanel Grid.Column="2">
-            <GroupBox Header="选择目标文件" Margin="5">
-                <StackPanel>
-                    <DockPanel>
-                        <Button Margin="0,5" DockPanel.Dock="Right" Click="ChooseTargetFile">选择</Button>
-                        <TextBox Margin="5" x:Name="targetBox"></TextBox>
-                    </DockPanel>
-                    <Button Margin="5" Click="Button_Click_1">加载目标文件</Button>
-                    <Button Margin="5" Click="Button_Click">加载默认方案</Button>
-                </StackPanel>
-            </GroupBox>
-            <Button Margin="5">清理</Button>
-            <Button Margin="5">分析</Button>
-            <Button Margin="5" Click="Button_Click_2">编写自定义方案</Button>
-        </StackPanel>
+        <DockPanel Grid.Column="2">
+            <StackPanel DockPanel.Dock="Top">
+                <GroupBox Header="选择目标文件" Margin="5">
+                    <StackPanel>
+                        <DockPanel>
+                            <Button Margin="0,5" DockPanel.Dock="Right" Click="ChooseTargetFile">选择</Button>
+                            <TextBox Margin="5" x:Name="targetBox"></TextBox>
+                        </DockPanel>
+                        <Button Margin="5" Click="Button_Click_1">加载目标文件</Button>
+                        <Button Margin="5" Click="Button_Click">加载默认方案</Button>
+                    </StackPanel>
+                </GroupBox>
+                <Button x:Name="clearButton"  Margin="5" Click="Delete">清理</Button>
+                <Button Margin="5">分析</Button>
+                <Button Margin="5" Click="Button_Click_2">编写自定义方案</Button>
+            </StackPanel>
+            <RichTextBox Margin="5"
+                         x:Name="logger"
+                         IsReadOnly="True"
+                         AcceptsReturn="True"
+                         VerticalAlignment="Stretch"
+                         HorizontalAlignment="Stretch"
+                         VerticalScrollBarVisibility="Visible"
+                         HorizontalScrollBarVisibility="Visible"
+                         DockPanel.Dock="Bottom"/>
+        </DockPanel>
     </Grid>
 </Window>

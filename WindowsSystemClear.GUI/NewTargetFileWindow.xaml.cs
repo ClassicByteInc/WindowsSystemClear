@@ -29,7 +29,7 @@ namespace WindowsSystemClear.GUI
 
 			try
 			{
-				list.Targets.Add(selectedPath , descriptionBox.Text);
+				list.Targets.Add(selectedPath, descriptionBox.Text);
 			}
 			catch (Exception)
 			{
@@ -88,20 +88,25 @@ namespace WindowsSystemClear.GUI
 				IsFolderPicker = true,
 				Title = "请选择目标文件夹"
 			};
+
 			if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
 			{
-				if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
+				string userName = Environment.UserName;
+				string selectedPath = dlg.FileName;
+				if (!string.IsNullOrEmpty(userName))
 				{
-					string userName = Environment.UserName;
-					string selectedPath = dlg.FileName;
-					if (!string.IsNullOrEmpty(userName))
-					{
-						selectedPath = selectedPath.Replace(userName, "{UserProfile}");
-					}
-					targetPath.Text = selectedPath;
+					selectedPath = selectedPath.Replace(userName, "{UserProfile}");
 				}
+				targetPath.Text = selectedPath;
+			}
+			try
+			{
 				targetPath.Text = dlg.FileName;
 			}
+			catch (InvalidOperationException)
+			{
+			}
+
 		}
 	}
 }

@@ -6,7 +6,33 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <SignAssembly>False</SignAssembly>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Windows System Clear</Title>
+    <Authors>Higashitani Yume</Authors>
+    <Company>ClassicByte</Company>
+    <Description>旨在通过简单轻便的命令行工具或者图形界面来清理Windows系统分区中的可能没有用的文件。
+</Description>
+    <Copyright>Copyright (C) 2025 ClassicByte org</Copyright>
+    <PackageProjectUrl>https://github.com/ClassicByteInc/WindowsSystemClear</PackageProjectUrl>
+    <PackageIcon>wsc.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/ClassicByteInc/WindowsSystemClear</RepositoryUrl>
+    <PackAsTool>False</PackAsTool>
+    <ToolCommandName>wscg</ToolCommandName>
+    <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\OneDrive\图片\图标素材\wsc.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
